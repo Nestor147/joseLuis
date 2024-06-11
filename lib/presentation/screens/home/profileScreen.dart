@@ -1,10 +1,5 @@
-import 'package:cuteapp/presentation/provider/UsuarioPersistente_provider.dart';
-import 'package:cuteapp/presentation/provider/momentosGraciosos/funnyImage_provider.dart';
-import 'package:cuteapp/presentation/provider/movies/movies_providers.dart';
-import 'package:cuteapp/presentation/widgets/momentosGraciosos/funnyImage_slide_show.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive/hive.dart';
 
 
 class UserProfile extends ConsumerWidget {

@@ -1,0 +1,30 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+  match /databases/{database}/documents {
+  // Reglas para la colecion de usuarios
+    match /users/{userId} {
+      allow read, write: if request.auth!=null;
+      
+      allow update: if request.auth != null && request.auth.uid  == userId;
+      
+      allow create: if request.auth  != null && request.resource.data.keys().hasAll(['username','email','password','id','imageUser','fecha','token','rol']) && request.resource.data.rol == 'user' && request.auth.uid == userId && request.resource.data.imageUser != null;
+      
+      allow delete: if request.auth != null && (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.rol in ['admin','user','superAdmin'] && request.auth.uid==userId);
+    }
+    
+    // Reglas generales para los roles de usuarios
+    match /{document=**} {
+    	allow read:if true;
+      
+      allow write:if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.rol in ['admin','superAdmin','user'];
+      
+      allow create: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.rol in ['admin','superAdmin','user'];
+      
+      allow update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.rol in ['admin','superAdmin','user'];
+      
+    }
+   
+  }
+}

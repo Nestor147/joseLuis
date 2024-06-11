@@ -1,14 +1,9 @@
 import 'package:cuteapp/presentation/provider/UsuarioPersistente_provider.dart';
-import 'package:cuteapp/presentation/provider/momentosGraciosos/funnyImage_provider.dart';
 import 'package:cuteapp/presentation/provider/momentosGraciosos/imagenes_slider_provider.dart';
-import 'package:cuteapp/presentation/provider/momentosGraciosos/images_slider_show_provider.dart';
-import 'package:cuteapp/presentation/provider/movies/movies_providers.dart';
-import 'package:cuteapp/presentation/widgets/anecdotasGraciosas/anecdotas_screen.dart';
 import 'package:cuteapp/presentation/widgets/momentosGraciosos/funnyImage_slide_show.dart';
 import 'package:cuteapp/presentation/widgets/shared/smart_device_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // import 'package:google_fo';
 

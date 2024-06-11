@@ -4,7 +4,6 @@ import 'package:cuteapp/config/services/push_notification.dart';
 import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:cuteapp/presentation/provider/appTheme_provider.dart';
 import 'package:cuteapp/presentation/provider/theme_change_provider.dart';
-import 'package:cuteapp/presentation/screens/mainModule.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

@@ -1,6 +1,6 @@
 import 'package:cuteapp/presentation/screens/auth/auth_page.dart';
 import 'package:cuteapp/presentation/screens/auth/loginScreen.dart';
-import 'package:cuteapp/presentation/screens/home/homeScreenAnimated.dart';
+import 'package:cuteapp/presentation/screens/home/components/sectionsButtonsforScreens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class MainPageScreen extends StatefulWidget {

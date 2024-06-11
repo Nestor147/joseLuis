@@ -1,21 +1,16 @@
 import 'dart:io';
 
 import 'package:cuteapp/config/services/push_notification.dart';
-import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:cuteapp/config/validators/validator.dart';
 import 'package:cuteapp/presentation/provider/appTheme_provider.dart';
 import 'package:cuteapp/presentation/provider/auth/register_provider.dart';
-import 'package:cuteapp/presentation/screens/auth/data/authentication_data.dart';
-import 'package:cuteapp/presentation/screens/auth/data/repositories/authentication_users_repositori.dart';
 import 'package:cuteapp/presentation/widgets/shared/button_login.dart';
-import 'package:cuteapp/presentation/widgets/shared/customtextField.dart';
 import 'package:cuteapp/presentation/widgets/shared/customtextFormFile.dart';
 import 'package:cuteapp/presentation/widgets/shared/upload_image.dart';
 import 'package:cuteapp/presentation/widgets/utils/showsnacbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:rive/rive.dart';
 
@@ -32,42 +27,28 @@ class RegisterScreen extends ConsumerStatefulWidget {
 class RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   final GlobalKey<FormState> _formkey =GlobalKey<FormState> ();
-
-   FocusNode usernameFocusNode = FocusNode();
+  FocusNode usernameFocusNode = FocusNode();
   TextEditingController usernameController = TextEditingController();
-
   FocusNode emailFocusNode = FocusNode();
   TextEditingController emailController = TextEditingController();
-
   FocusNode passwordFocusNode = FocusNode();
   TextEditingController passwordController = TextEditingController();
-
   FocusNode birthFocusNode = FocusNode();
   TextEditingController birthController = TextEditingController();
-
- 
-
-  
-
-  /// rive controller and input
   StateMachineController? controller;
 
   SMIInput<bool>? isChecking;
   SMIInput<double>? numLook;
   SMIInput<bool>? isHandsUp;
-
   SMIInput<bool>? trigSuccess;
   SMIInput<bool>? trigFail;
-
-  bool _isObscure=true;
+  // bool _isObscure=true;
   bool _isLoading=false;
   File? image;
-
   static String? token;
 
   @override
   void initState() {
-  
     emailFocusNode.addListener(emailFocus);
     passwordFocusNode.addListener(passwordFocus);
     birthFocusNode.addListener(passwordConfirmFocus);
@@ -88,11 +69,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
     super.initState();
       passwordFocusNode.addListener(() {setState(() {});});
   }
-
-
-
-  
-
   @override
   void dispose() {
     emailFocusNode.removeListener(emailFocus);
@@ -112,11 +88,11 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
     final registerUserProvider=ref.read(registerProvider.notifier);
     // if(true){
     // if(_formkey.currentState!=null && _formkey.currentState!.validate()){
-    if(_formkey.currentState!=null){
-      setState(() {
-        _isLoading=true;
-      });
-      print("llega hasta aqui 1 ");
+    // if(_formkey.currentState!.validate()){
+    //   setState(() {
+    //     _isLoading=true;
+    //   });
+    //   print("llega hasta aqui 1 ");
 
       //verificar si el nombre de usuario no existe
       final bool existUserName=await registerUserProvider.chekUserExist(usernameController.text);
@@ -138,20 +114,15 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
         showSnackbar(context,"El email ya existe");
         return;
       }
-
-      //validar que ingrese imagen de perfil
       if(image==null){
         setState(() {
           _isLoading=false;
         });
         showSnackbar(context, "Ingrese una imagen de perfil");
       }
-      //obtener fecha y hora actual
       final now =DateTime.now();
       String formatedData=DateFormat('dd/MM/yyyy').format(now);
-      //obtener la fecha de nacimiento
       final birth=birthController.text;
-      //calcular la edad
       DateTime dateBirth=DateFormat('dd/MM/yyyy').parse(birth);
       int age=now.year-dateBirth.year;
       if(now.month<dateBirth.month || (now.month==dateBirth.month && now.day <dateBirth.day)){
@@ -184,12 +155,12 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
       }catch(e){
         showSnackbar(context, e.toString());
       }
-    }else{
-      print("llega aqui por default");
-      setState(() {
-        _isLoading=false;
-      });
-    }
+    // }else{
+    //   print("llega aqui por default");
+    //   setState(() {
+    //     _isLoading=false;
+    //   });
+    // }
   }
 
 
@@ -228,8 +199,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
         child: Consumer(
             builder:(BuildContext context,WidgetRef ref, child) {
             final isdarkMode=ref.watch(appThemeGlobalProvider);
-
-
           return Column(
             children: [
               const SizedBox(height: 10),
@@ -238,7 +207,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                 alignment: Alignment.centerRight,
                 child: IconButton(
                   style: IconButton.styleFrom(
-                    // backgroundColor: colorTheme.background
+
                   ),
                          icon:Icon( isdarkMode
                          ? Icons.light_mode_outlined
@@ -254,18 +223,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                  ),
               ),
         
-             
-              //const SizedBox(height: 32),
-              //TODO: letras de rive
-              // Text( isdarkMode?
-              //   "Que linda Contraseña":"A poco te llamas así!!!",
-              //   style: TextStyle(color: Colors.black,fontSize: 32,fontWeight: FontWeight.w800),
-                
-              //   // style: Theme.of(context).textTheme.headlineMedium,
-                
-              //   textAlign: TextAlign.center,
-                
-              // ),
+
               SizedBox(
                 height: 150,
                 width: 150,
@@ -276,8 +234,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                   onInit: (artboard) {
                     controller = StateMachineController.fromArtboard(
                       artboard,
-        
-                      /// from rive, you can see it in rive editor
                       "Login Machine",
                     );
                     if (controller == null) return;
@@ -291,8 +247,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                   },
                 ),
               ),
-              Container(
-                
+              Container(  
                 decoration: BoxDecoration(
                   color: Color.fromARGB(188, 4, 0, 0),
                   borderRadius: BorderRadius.circular(16),
@@ -319,8 +274,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                         )
                       ),
                       SizedBox(height: 10,),
-
-
                         CustomTextFormField(
                           icon: Icons.account_box,
                            colorTheme: colorTheme,
@@ -355,16 +308,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                         estado: false,
                         keyboardType:TextInputType.visiblePassword,
                         validator: Validators.passwordValidator, ),
-                      // const SizedBox(height: 15),
-                      //   CustomTextFormField(
-                      //     icon: Icons.admin_panel_settings_rounded,
-                      //      colorTheme: colorTheme,
-                      //       focusNode: birthFocusNode,
-                      //        controller: birthController,
-                      //        typeName: "Password Confirm",
-                      //        estado: true), 
                       const SizedBox(height: 15),
-
                       getBirth(context),
                       const SizedBox(height: 25),
                         SizedBox(
@@ -381,7 +325,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                                   style: TextStyle(color: Colors.blue),
                                 ),
                               ),
-                            
                           ],
                         ),
                       ),
@@ -394,152 +337,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                         }),
                       const SizedBox(height: 15),
                   
-                  //     SizedBox(
-                        
-                  //       width: MediaQuery.of(context).size.width,
-                  //       height: 64,
                   
-                  //       child: ElevatedButton(                        
-                  //         onPressed: () async {
-                  //           nameFocusNode.unfocus();
-                  //           emailFocusNode.unfocus();
-                  //           passwordFocusNode.unfocus();
-                  //           passwordConfirmFocusNode.unfocus();
-                  //           final name=nameController.text;
-                  //           final email = emailController.text;
-                  //           final password = passwordController.text;
-                  //           final passwordConfirm=passwordConfirmController.text;
-                  //           if ( name.isEmpty || email.isEmpty || password.isEmpty || passwordConfirm.isEmpty ) {
-                  //       // Muestra un mensaje de error al usuario si falta información
-                  //       ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           content: Text('Por favor, completa todos los campos.'),
-                  //         ),
-                  //       );
-                  //       return;
-                  //     }
-                      
-                  //       else{
-                  //  showDialog(
-                  //   context: context,
-                  //   builder: (context) {
-                  //     return Column(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         const Center(
-                  //           // child: CircularProgressIndicator(),
-                  //         ),
-                  //         SizedBox(height: 10),
-                  //         FutureBuilder(
-                  //           future: Future.delayed(Duration(seconds: 2)),
-                  //           builder: (context, snapshot) {
-                  //             if (snapshot.connectionState == ConnectionState.done) {
-                  //               return Column(
-                  // children: [
-                  //   const Center(
-                  //     child: Icon(Icons.add_to_home_screen, size: 45),
-                  //   ),
-                  //   const Center(
-                  //     child: Text("Presione para iniciar"),
-                  //   ),
-                  // ],
-                  //               );
-                  //             } else {
-                  //               return CircularProgressIndicator();
-                  //             }
-                  //           },
-                  //         ),
-                  //       ],
-                  //     );
-                  //   },
-                  // );
-                  //       //  await AuthenticationRemote().register(email, password, passwordConfirm); 
-                  
-                  //       try{
-                  //         if(password==passwordConfirm){
-                  
-                  //       var response = await AuthenticationRemoteUsers().register(name,email, password);
-                  //       print(response);
-                  //         // Navigator.pop(context);
-                  //           if(response=="RegistradoExito"){
-                      
-                         
-                  //        }else if(response=="[firebase_auth/email-already-in-use] The email address is already in use by another account."){
-                  //           final String messagePassword="El usuario ya existe";
-                  //         //  errorMessage(messagePassword);
-                  //           ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           backgroundColor: Color.fromARGB(255, 61, 92, 185),
-                  //           content: Text(messagePassword),
-                  //         ),
-                  //       );
-                  //       print("este es el contexto ${context}");
-                  //         Navigator.pop(context);
-                  //        }else if(response=="EmailIncorrecto"){
-                  //           final String messageEmail="Email incorrecto";
-                  //         //  errorMessage(messagePassword);
-                  //           ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           backgroundColor: Color.fromARGB(233, 255, 1, 1),
-                  //           content: Text(messageEmail),
-                  //         ),
-                  //       );
-                  //       print("este es el contexto ${context}");
-                  //       // 
-                  //         Navigator.pop(context);
-                  //        }else if(response=="[firebase_auth/weak-password] Password should be at least 6 characters"){
-                  //           final String messageEmail="La contraseña debe ser mayor a 6 caracteres";
-                  //         //  errorMessage(messagePassword);
-                  //           ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           backgroundColor: Color.fromARGB(233, 255, 136, 1),
-                  //           content: Text(messageEmail),
-                  //         ),
-                  //       );
-                  //       print("este es el contexto ${context}");
-                  //       // 
-                  //         Navigator.pop(context);
-                  //        }
-                  //         }else{
-                  //           print("las contraseñas no son iguales");
-                  //            ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           backgroundColor: Color.fromRGBO(255, 1, 1, 0.914),
-                  //           content: Text("Las contraseñas no son iguales"),
-                  //         ),
-                  //       );
-                  //           // errorMessage("Las contraseñas no son iguales");
-                  //       print("este es el contexto ${context}");
-                  
-                  //       Navigator.pop(context);
-                  
-                  //         }
-                  //       // await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.trim(), password: password.trim());
-                  //       // Navigator.pop(context);
-                  //        }on FirebaseAuthException catch (e){
-                  //         Navigator.pop(context);
-                  //         // errorMessage(e.code);
-                      
-                  //        }
-                  //         // Navigator.pop(context);
-                  
-                  //     }
-                  //         // Navigator.pop(context);
-                  
-                  //         },
-                  //         style: ElevatedButton.styleFrom(
-                            
-                  //           backgroundColor: colorTheme.secondary,
-                  //           shape: RoundedRectangleBorder(
-                              
-                  //             borderRadius: BorderRadius.circular(16), 
-                              
-                  //           ),
-                            
-                  //         ),
-                  //         child:  Text("Register",style: TextStyle(fontSize: 18,color: colorTheme.background),),
-                  //       ),
-                  //     ),
                       const SizedBox(height: 10),
                     ],
                   ),

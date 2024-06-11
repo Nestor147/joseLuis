@@ -11,7 +11,7 @@ Map<String, Widget Function(BuildContext)> appRoutes={
   Routes.home:(_)=> const HomePage(),
   Routes.inicio:(_)=> const IniciPage()
 //  Routes.login:(_)=> const LoginScreen(),
-//Routes.register:(_)=> const RegisterScreen(),
+// Routes.register:(_)=> const RegisterScreen(),
 
 
 };

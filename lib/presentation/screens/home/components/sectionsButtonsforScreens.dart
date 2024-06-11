@@ -1,10 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:cuteapp/presentation/provider/UsuarioPersistente_provider.dart';
-import 'package:cuteapp/presentation/provider/movies/movies_providers.dart';
-import 'package:cuteapp/presentation/provider/movies/movies_slide_show_provider.dart';
 import 'package:cuteapp/presentation/screens/screen.dart';
 import 'package:cuteapp/presentation/widgets/busquedas/busqueda_Screen.dart';
-import 'package:cuteapp/presentation/widgets/momentosGraciosos/funnyImage_slide_show.dart';
 import 'package:cuteapp/presentation/widgets/side_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
