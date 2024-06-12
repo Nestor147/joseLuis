@@ -15,6 +15,7 @@ const List<Color> themesColor=[
 ];
 
 const colorTheme =Color.fromARGB(255, 11, 140, 232);
+const colorSDATheme = Color.fromRGBO(0, 127, 152, 1.0);
 class AppthemeNew{
   final int selectedColor ;
   final bool isDarkMode ;

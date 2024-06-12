@@ -1,3 +1,4 @@
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:cuteapp/config/validators/validator.dart';
 import 'package:flutter/material.dart';
 class CustomTextFormField extends StatelessWidget {
@@ -40,16 +41,26 @@ class CustomTextFormField extends StatelessWidget {
         border: InputBorder.none,
         hintText: typeName,
         labelText: labelText,
-        prefixIcon:  Icon(icon, color: focusNode.hasFocus ? Colors.blue :const Color(0xffc5c5c5),),
+        prefixIcon:  Icon(icon, 
+          color: focusNode.hasFocus ? 
+            // FIXME: FM 6.11.24
+            // Colors.blue :
+            colorSDATheme :
+            const Color(0xffc5c5c5),),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xffc5c5c5),
+              borderSide: const BorderSide(
+                color: Color(0xffc5c5c5),
               width: 2.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color:Colors.blue,
-              width: 2.0),
+              borderSide: const BorderSide(
+                // FIXME: FM 6.11.24
+                // color:Colors.blue,
+                color:colorSDATheme,
+                width: 2.0
+              ),
             )
         
         ),

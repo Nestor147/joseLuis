@@ -38,7 +38,9 @@ import 'package:cuteapp/presentation/widgets/momentosGraciosos/funnyMoment.dart'
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../presentation/screens/auth/registerScreen.dart';
 import '../../presentation/screens/screen.dart';
+import '../services/local_storage.dart';
 
 
 
@@ -46,14 +48,28 @@ part 'app_router.g.dart';
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(
-    initialLocation: '/',
+    // FIXME: NV 6.12.24
+    // initialLocation: '/',
+    initialLocation: (LocalStorage().getIsLoggedIn()) ? '/church' : '/',
   routes:[
 
       GoRoute(
       path: '/',
-      builder: (context, state) => const    ChurchScreen()),
+      // builder: (context, state) => const    ChurchScreen()),
       // builder: (context, state) => const    UserHome()),
-    //TODO:   // builder: (context, state) => const MainPageScreen()),
+      // TODO: Change to MainPageScreen
+      // builder: (context, state) => const MainPageScreen()),
+      builder: (context, state) => LoginScreen()),
+      GoRoute(
+      path: '/register',
+      builder: (context, state) => RegisterScreen()),
+
+      // GoRoute(
+      // path: '/login',
+      // // builder: (context, state) => const    ChurchScreen()),
+      // // builder: (context, state) => const    UserHome()),
+      // // TODO: Change to MainPageScreen
+      // builder: (context, state) => const MainPageScreen()),
 
       GoRoute(
       path: '/church',
