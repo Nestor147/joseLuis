@@ -27,8 +27,8 @@ class ChurchScreenState extends ConsumerState<CunaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cuna"),
-        centerTitle: true,
+        title: const Text("Cuna",style: TextStyle(color: Colors.white),),
+        centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(12, 5, 15, 5),

@@ -12,16 +12,16 @@ import 'package:cuteapp/presentation/widgets/busquedas/busqueda_Screen.dart';
 import 'package:cuteapp/presentation/widgets/church/churchScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Adultos/adultosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Adultos/components/recursosadultos.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/extrasScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/multimediaVideosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Cuna/shared/selectVideosOrAudiosScreenCuna.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/shared/extrasScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/cunaScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/leccionAlumnosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/leccionMaestrosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/materialesScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/misioneroScreen.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/multimediaScreen.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/Cuna/shared/audioPlayViewExample.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/Cuna/shared/audioplayViewScreen.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/Cuna/shared/pdfViewScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/shared/audioplayViewScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Infantes/components/recursosInfantes.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Infantes/infanteScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/components/recursosIntermedios.dart';
@@ -30,6 +30,9 @@ import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/components
 import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/juvenilesScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Primarios/components/recursosPrimarios.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Primarios/primariosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/shared/pdfViewScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/shared/videoPlayViewScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/shared/videoPlayViewScreen.dart';
 import 'package:cuteapp/presentation/widgets/crearImagenes/Image_Screen.dart';
 import 'package:cuteapp/presentation/widgets/crearImagenes/crearImagen_Screen.dart';
 import 'package:cuteapp/presentation/widgets/crearMusicas/Music_Screen.dart';
@@ -51,7 +54,9 @@ GoRouter appRouter(AppRouterRef ref) {
 
       GoRoute(
       path: '/',
+      // builder: (context, state) => const    ExtrasScreen()),
       builder: (context, state) => const    ChurchScreen()),
+      // builder: (context, state) => const    SelectVideosOrAudioScreen()),
       // builder: (context, state) => const    UserHome()),
     //TODO:   // builder: (context, state) => const MainPageScreen()),
 
@@ -178,8 +183,12 @@ GoRouter appRouter(AppRouterRef ref) {
     // builder: (context, state) =>  AudioPlayViewScreen()),
     builder: (context, state) =>  MaterialScreenCuna()),
      GoRoute(
-      path: '/multimedia',
-    builder: (context, state) =>  MultimediaScreenCuna()),
+      path: '/video',
+      builder: (context, state) {
+          final content =state.extra as Content;
+          return VideoViewScreen(content: content);
+        },),
+    // builder: (context, state) =>  MultimediaScreenCuna()),
 
      GoRoute(
         path: '/audio',
@@ -193,7 +202,7 @@ GoRouter appRouter(AppRouterRef ref) {
     builder: (context, state) =>  MisioneroScreenCuna()),
      GoRoute(
       path: '/extras',
-    builder: (context, state) =>  ExtrasScreenCuna()),
+    builder: (context, state) =>  ExtrasScreen()),
 
        GoRoute(
         path: '/pdfviewer',
@@ -201,6 +210,28 @@ GoRouter appRouter(AppRouterRef ref) {
           final content =state.extra as Content;
           return PdfViewerScreen(content: content);
         },
+      ),
+
+       GoRoute(
+        path: '/multimedia',
+        builder: (context, state) => SelectVideosOrAudioScreenCuna()
+        
+      ),
+
+        GoRoute(
+          path: '/multimediaAudioCuna',
+
+        builder: (context, state) => MultimediaAudiosScreenCuna()
+        
+      ),
+
+        GoRoute(
+       
+        path: '/multimediVideoCuna',
+        
+
+        builder: (context, state) => MultimediaVideosScreenCuna()
+        
       ),
  
     //Cuna

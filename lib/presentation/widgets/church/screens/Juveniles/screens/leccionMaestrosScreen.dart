@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class LeccionMaestrosScreenCuna extends StatefulWidget {
+class LeccionMaestrosScreenJuveniles extends StatefulWidget {
   @override
-  _LeccionMaestrosScreenCunaState createState() => _LeccionMaestrosScreenCunaState();
+  _LeccionMaestrosScreenJuvenilesState createState() => _LeccionMaestrosScreenJuvenilesState();
 }
 
-class _LeccionMaestrosScreenCunaState extends State<LeccionMaestrosScreenCuna> {
+class _LeccionMaestrosScreenJuvenilesState extends State<LeccionMaestrosScreenJuveniles> {
  @override
   Widget build(BuildContext context) {
     return Scaffold(

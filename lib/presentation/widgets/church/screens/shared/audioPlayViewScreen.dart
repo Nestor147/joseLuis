@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +43,7 @@ late AudioPlayer player = AudioPlayer();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Audios'),centerTitle: true,
+        title:  Text("Audio",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -75,7 +74,7 @@ late AudioPlayer player = AudioPlayer();
            padding: const EdgeInsets.all(20.0),
            child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network('https://media.es.wired.com/photos/650b2a2e72d73ca3bd5ef0cc/16:9/w_2560%2Cc_limit/Business-OpenAI-Dall-E-3-heart.jpg',
+            child: Image.asset('assets/logoIglesia.jpg',
             width: double.infinity,
             fit: BoxFit.cover,),
                    ),
@@ -179,25 +178,26 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               onPressed: _isPlaying ? null : _play,
               iconSize: 48.0,
               icon: const Icon(Icons.play_arrow),
-              color: color,
+              color: Color.fromARGB(255, 11, 35, 86),
             ),
             IconButton(
               key: const Key('pause_button'),
               onPressed: _isPlaying ? _pause : null,
               iconSize: 48.0,
               icon: const Icon(Icons.pause),
-              color: color,
+              color:Color.fromARGB(255, 11, 35, 86),
             ),
             IconButton(
               key: const Key('stop_button'),
               onPressed: _isPlaying || _isPaused ? _stop : null,
               iconSize: 48.0,
               icon: const Icon(Icons.stop),
-              color: color,
+              color: Color.fromARGB(255, 11, 35, 86),
             ),
           ],
         ),
         Slider(
+          
           onChanged: (value) {
             final duration = _duration;
             if (duration == null) {

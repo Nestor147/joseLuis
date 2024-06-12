@@ -11,7 +11,7 @@ class PdfViewerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(content.name,),centerTitle: true,
+        title: Text(content.name,style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: SfPdfViewer.network(
         content.content,

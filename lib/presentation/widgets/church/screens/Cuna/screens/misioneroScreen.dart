@@ -14,7 +14,7 @@ class _MisioneroScreenCunaState extends State<MisioneroScreenCuna> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Misionero',),centerTitle: true,
+        title: Text('Misionero',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -25,7 +25,7 @@ class _MisioneroScreenCunaState extends State<MisioneroScreenCuna> {
               padding: EdgeInsets.all(5),
               child: ListTile(
                 
-                tileColor: Color.fromARGB(255, 26, 225, 79),
+                tileColor: Color.fromARGB(255, 11, 35, 86),
                 focusColor: Colors.red,
                 hoverColor: Colors.green,
                 shape:BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),

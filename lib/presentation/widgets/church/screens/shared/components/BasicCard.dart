@@ -48,10 +48,7 @@ class _BasicCardState extends State<BasicCard> {
             children: [
               ListTile(
                 leading: const CircleAvatar(   
-                 backgroundImage: NetworkImage(
-        "https://scontent.flpb3-1.fna.fbcdn.net/v/t39.30808-6/362242757_660327252798765_5702867197864779876_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=PG1LzmJptfkQ7kNvgHD1v3P&_nc_ht=scontent.flpb3-1.fna&oh=00_AYAQt28S7ukwSeyqKfzv6evzql218r1TULnCygWXM4eB-g&oe=66652667",
-        
-      ),
+                 backgroundImage: AssetImage("assets/logoIglesia.jpg"),
         ) ,
                 title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 11, 35, 86),fontSize:25)),
                 subtitle: Text(widget.age,style: const TextStyle(fontWeight: FontWeight.bold ,color: Color.fromARGB(255, 11, 35, 86),fontSize:20,fontFamily:AutofillHints.streetAddressLevel1)),

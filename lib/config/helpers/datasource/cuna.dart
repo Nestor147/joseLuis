@@ -16,6 +16,19 @@ class Content {
   });
 }
 
+class Multimedia {
+
+  final String title;
+  final String pathAudio;
+  final String pathVideo;
+  Multimedia({
+    required this.title,
+    required this.pathAudio,
+    required this.pathVideo,
+
+  });
+}
+
 class Section {
   final String name;
   final List<Content> contents;
@@ -35,6 +48,8 @@ class Category {
     required this.sections,
   });
 }
+
+
 
 
   List<Content> leccionesAlumnos = [
@@ -116,12 +131,12 @@ class Category {
       content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Cuna/2do2022/Maestro/CunaMaestro_2do2022.pdf',
       contentType: ContentType.Pdf
     ),
-    Content(
-      id: 13,
-      name: 'Mapa-Misionero-2T',
-      content: 'https://drive.google.com/file/d/1daTnh2NXWeZetYKVyZYgOrOAIizIua9d/view',
-      contentType: ContentType.Pdf
-    ),
+    // Content(
+    //   id: 13,
+    //   name: 'Mapa-Misionero-2T',
+    //   content: 'https://drive.google.com/file/d/1daTnh2NXWeZetYKVyZYgOrOAIizIua9d/view',
+    //   contentType: ContentType.Pdf
+    // ),
     Content(
       id: 14,
       name: 'Cuaderno-Actividades',
@@ -130,7 +145,7 @@ class Category {
     )
   ];
 
-  List<Content> multimedia = [
+  List<Content> multimediaAudios = [
     Content(
       id: 15,
       name: 'Las clases terminaron',
@@ -299,22 +314,19 @@ class Category {
       content: '28_vamos_a_la_casa_del_senor.mp3',
       contentType: ContentType.Audio
     ),
-    Content(
+   
+  ];
+
+  List<Content>multimediaVideos=[
+ Content(
       id: 43,
       name: 'Culto familiar con bebes',
-      content: 'https://drive.google.com/file/d/1JvlzoSNubgqZK82wmUs0oRQqC_nXMVtz/view',
+      content: 'https://www.youtube.com/watch?v=v_PpzoLfAsg',
       contentType: ContentType.Video
     )
   ];
 
-  List<Content> extras = [
-    Content(
-      id: 44,
-      name: 'El Maestro y la Presentación de la Lección de Escuela Sabática – pptx',
-      content: 'https://www.recursos-biblicos.com/2014/04/el-maestro-y-la-presentacion-de-la-leccion-escuela-sabatica.html',
-      contentType: ContentType.Pdf
-    )
-  ];
+ 
 
     List<Content> misionero = [
     Content(
@@ -389,5 +401,14 @@ class Category {
       content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/MisioneroNi%C3%B1os/2DO2024/_12%20Armenia%2C%2022%20de%20junio%20Syuzanna.pdf',
       contentType: ContentType.Pdf
     ),
+  ];
+
+   List<Content> extras = [
+    Content(
+      id: 44,
+      name: 'El Maestro y la Presentación de la Lección de Escuela Sabática – pptx',
+      content: 'https://www.recursos-biblicos.com/2014/04/el-maestro-y-la-presentacion-de-la-leccion-escuela-sabatica.html',
+      contentType: ContentType.Pdf
+    )
   ];
 

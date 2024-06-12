@@ -14,7 +14,7 @@ class _MaterialScreenCunaState extends State<MaterialScreenCuna> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Materiales',),centerTitle: true,
+        title: Text('Materiales',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -25,7 +25,7 @@ class _MaterialScreenCunaState extends State<MaterialScreenCuna> {
               padding: EdgeInsets.all(5),
               child: ListTile(
                 
-                tileColor: Color.fromARGB(255, 119, 182, 233),
+                tileColor: Color.fromARGB(255, 11, 35, 86),
                 focusColor: Colors.red,
                 hoverColor: Colors.green,
                 shape:BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),

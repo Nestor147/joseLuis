@@ -15,7 +15,7 @@ class _LeccionAlumnosScreenCunaState extends State<LeccionAlumnosScreenCuna> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lección Alumnos',),centerTitle: true,
+        title: Text('Lección Alumnos',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -26,7 +26,7 @@ class _LeccionAlumnosScreenCunaState extends State<LeccionAlumnosScreenCuna> {
               padding: EdgeInsets.all(5),
               child: ListTile(
                 
-                tileColor: Colors.blue,
+                tileColor: Color.fromARGB(255, 11, 35, 86),
                 focusColor: Colors.red,
                 hoverColor: Colors.green,
                 shape:BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),

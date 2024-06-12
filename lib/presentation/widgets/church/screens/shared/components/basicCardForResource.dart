@@ -67,7 +67,7 @@ class _CardForResourceState extends State<CardForResource> {
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 11, 35, 86),
                     borderRadius: BorderRadius.circular(12)
                   ),
                   child: Center(
@@ -90,7 +90,7 @@ class _CardForResourceState extends State<CardForResource> {
                       widget.title,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 11, 35, 86),
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),
@@ -113,7 +113,7 @@ class _CardForResourceState extends State<CardForResource> {
                       widget.subtitle,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 11, 35, 86),
                         fontSize: 18,
                       ),
                     ),
