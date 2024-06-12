@@ -3,6 +3,7 @@
 import 'package:cuteapp/config/services/local_storage.dart';
 import 'package:cuteapp/config/services/push_notification.dart';
 import 'package:cuteapp/config/validators/validator.dart';
+import 'package:cuteapp/env/environment.dart';
 import 'package:cuteapp/pages/inicio_page.dart';
 import 'package:cuteapp/presentation/provider/User_provider.dart';
 import 'package:cuteapp/presentation/provider/UsuarioPersistente_provider.dart';
@@ -11,6 +12,8 @@ import 'package:cuteapp/presentation/provider/auth/login_provider.dart';
 import 'package:cuteapp/presentation/provider/customUser_provider.dart';
 import 'package:cuteapp/presentation/screens/auth/data/authentication_data.dart';
 import 'package:cuteapp/presentation/screens/auth/data/repositories/authentication_users_repositori.dart';
+import 'package:cuteapp/presentation/services/authentication.service.dart';
+import 'package:cuteapp/presentation/widgets/church/churchScreen.dart';
 import 'package:cuteapp/presentation/widgets/shared/button_login.dart';
 import 'package:cuteapp/presentation/widgets/shared/customtextField.dart';
 import 'package:cuteapp/presentation/widgets/shared/ImageLogin.dart';
@@ -24,11 +27,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../config/themes/appTheme.dart';
+
 
 class LoginScreen extends ConsumerStatefulWidget {
-  final VoidCallback show;
+  // final VoidCallback show;
 
-   LoginScreen( this.show);
+  //  LoginScreen( this.show);
+   LoginScreen();
 
   @override
   LoginScreenState createState() => LoginScreenState();
@@ -78,73 +84,80 @@ class LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   //loguearse
-  void onFormLogin(
-    String usernameOrEmail,
-    String password,
-    context
-  ) async{
-    final loginuserProvider=ref.watch(loginProviderProvider.notifier);
-    if(_formkey.currentState!.validate()){
-      setState(() {
-        _isLoading=true;
-      });
-      final String usernameOrEmailLower=usernameOrEmail.toLowerCase();
-      loginuserProvider.loginUser(
-        usernameOrEmail:usernameOrEmailLower ,
-         password: password,
-          onSuccess: ()async {
-            //si el usuario ha verificado su correo electronico
-            User? user=FirebaseAuth.instance.currentUser;
-              if(user!=null && user.emailVerified){
-              //verificar si el usuario ha verificado su correo electronico
-              setState((){
-              _isLoading=false;
-            });
-            dynamic userData=await loginuserProvider.getUserData(user.email!);
-            //guardar datos de local
-            await LocalStorage().saveUserData(emailOrEmailController.text, passwordController.text);
-            //guardar estado de inicio de sesion
-            await LocalStorage().setIsSignedIn(true);
-            //cambiar estado de autenticacion
-            loginuserProvider.checkAuthState();
+  void onFormLogin(String usernameOrEmail, String password, contextTemp) async{
+    // FIXME: FM 6.11.24
+    // final loginuserProvider=ref.watch(loginProviderProvider.notifier);
+    // if(_formkey.currentState!.validate()){
+    //   setState(() {
+    //     _isLoading=true;
+    //   });
+    //   final String usernameOrEmailLower=usernameOrEmail.toLowerCase();
+    //   loginuserProvider.loginUser(
+    //     usernameOrEmail:usernameOrEmailLower ,
+    //      password: password,
+    //       onSuccess: ()async {
+    //         //si el usuario ha verificado su correo electronico
+    //         User? user=FirebaseAuth.instance.currentUser;
+    //           if(user!=null && user.emailVerified){
+    //           //verificar si el usuario ha verificado su correo electronico
+    //           setState((){
+    //           _isLoading=false;
+    //         });
+    //         dynamic userData=await loginuserProvider.getUserData(user.email!);
+    //         //guardar datos de local
+    //         await LocalStorage().saveUserData(emailOrEmailController.text, passwordController.text);
+    //         //guardar estado de inicio de sesion
+    //         await LocalStorage().setIsSignedIn(true);
+    //         //cambiar estado de autenticacion
+    //         loginuserProvider.checkAuthState();
 
-            //navegar al inicio 
-            Navigator.pushReplacement(context,
-             MaterialPageRoute(builder: (context){
-              return IniciPage(userData:userData);
-             }));
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
-              }else{
-                //si el usuario no ha verificado su correo electronico
-                setState((){
-              _isLoading=false;
-            });
-            await showDialog(context: context,
-             builder: (context){
-              return AlertDialog(
-                title: const Text("Verifica tu correo"),
-                content: const Text("Por favor verifica tu correo electrónico para continuar"),
-                actions: [
-                  TextButton(onPressed: (){
-                    Navigator.pop(context);
-                  },
-                   child: const Text("Aceptar"))
-                ],
-              );
-             });
-              }
+    //         //navegar al inicio 
+    //         Navigator.pushReplacement(context,
+    //          MaterialPageRoute(builder: (context){
+    //           return IniciPage(userData:userData);
+    //          }));
+    //         //Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+    //           }else{
+    //             //si el usuario no ha verificado su correo electronico
+    //             setState((){
+    //           _isLoading=false;
+    //         });
+    //         await showDialog(context: context,
+    //          builder: (context){
+    //           return AlertDialog(
+    //             title: const Text("Verifica tu correo"),
+    //             content: const Text("Por favor verifica tu correo electrónico para continuar"),
+    //             actions: [
+    //               TextButton(onPressed: (){
+    //                 Navigator.pop(context);
+    //               },
+    //                child: const Text("Aceptar"))
+    //             ],
+    //           );
+    //          });
+    //           }
 
-          },
-           onError: (String error){
-            setState(() {
-              _isLoading=false;
-            });
-          showSnackbar(context, error.toString());
-           });
-    }else{
-      setState(() {
-        _isLoading=false;
-      });
+    //       },
+    //        onError: (String error){
+    //         setState(() {
+    //           _isLoading=false;
+    //         });
+    //       showSnackbar(context, error.toString());
+    //        });
+    // }else{
+    //   setState(() {
+    //     _isLoading=false;
+    //   });
+    // }
+
+    var response = await AuthenticationService().loginUser(usernameOrEmail, password);
+    // print('HTTP: $response');
+    showSnackbar(contextTemp, response);
+    var assertLogin = LocalStorage().getIsLoggedIn();
+    if(assertLogin) {
+      // FIXME: NV 6.12.24
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ChurchScreen()));
+      // Navigator.pushNamedAndRemoveUntil(context, '/church', (route) => false);
     }
   }
 
@@ -251,8 +264,14 @@ Future<Map<String, String>> loadUserData() async {
          
               const SizedBox(height: 2),
               Text( isdarkMode?
-                "CuteApp":"NetDevs",
-                style: TextStyle(color: colorTheme.background,fontSize: 32,fontWeight: FontWeight.w800),
+                Environment.APP_NAME:"NetDevs",
+                style: TextStyle(
+                  // FIXME: FM 6.11.24
+                  // color: colorTheme.background,
+                  color: colorSDATheme,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800
+                ),
                 
                 // style: Theme.of(context).textTheme.headlineMedium,
                 
@@ -269,7 +288,6 @@ Future<Map<String, String>> loadUserData() async {
                   onInit: (artboard) {
                     controller = StateMachineController.fromArtboard(
                       artboard,
-        
                       /// from rive, you can see it in rive editor
                       "Login Machine",
                     );
@@ -287,7 +305,9 @@ Future<Map<String, String>> loadUserData() async {
               Container(
                 
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(188, 4, 0, 0),
+                  // FIXME: FM 6.11.24
+                  // color: const Color.fromARGB(188, 4, 0, 0),
+                  color: colorTheme.background,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 padding: const EdgeInsets.all(16),
@@ -327,20 +347,26 @@ Future<Map<String, String>> loadUserData() async {
                             const Text("No tienes una cuenta?"),
                             const SizedBox(width: 5,),
                             GestureDetector(
-                              onTap: widget.show,
-                                child:  const Text(
-                                  "Registrar",
-                                  style: TextStyle(color: Colors.blue),
+                              // onTap: widget.show,
+                              onTap: () {
+                                // Navigator.pushNamedAndRemoveUntil(context, '/register', (route) => false);
+                                context.go('/register');
+                              },
+                              child:  const Text(
+                                "Registrarse",
+                                style: TextStyle(
+                                  // color: Colors.blue
+                                  color: colorSDATheme
                                 ),
                               ),
-                            
+                            ),
                           ],
                         ),
                       ),
                       const SizedBox(height: 15),
                       _isLoading ? CircularProgressIndicator()
                       : ButtonLoginWidget(
-                        text: "Inicia Sesión", 
+                        text: "Ingresar", 
                         onPressed: (){
                           onFormLogin(
                             emailOrEmailController.text ,
@@ -349,36 +375,36 @@ Future<Map<String, String>> loadUserData() async {
                         }),
                   
                             
-                             
-                      const SizedBox(height: 10),
-                      const Row  (
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              thickness: 1.5 ,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Text("Continuar con..."),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              thickness: 1.5,
-                              color:Colors.white
-                            ),
-                          ),
-                        ],
-                      ),
-                       Row (
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:  [
-                          ImageLogin(signGoogle: signGoogleAuth,imagePath: 'assets/google.png'),
-                          const SizedBox(width: 25,),
-                          ImageLogin(signGoogle: signGoogleAuth,imagePath:'assets/iphone.png'),
-                        ],
-                      )
+                      // FIXME: FM 6.11.24
+                      // const SizedBox(height: 10),
+                      // const Row  (
+                      //   children: [
+                      //     Expanded(
+                      //       child: Divider(
+                      //         thickness: 1.5 ,
+                      //         color: Colors.white,
+                      //       ),
+                      //     ),
+                      //     Padding(
+                      //       padding: EdgeInsets.all(8),
+                      //       child: Text("Continuar con..."),
+                      //     ),
+                      //     Expanded(
+                      //       child: Divider(
+                      //         thickness: 1.5,
+                      //         color:Colors.white
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      //  Row (
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children:  [
+                      //     ImageLogin(signGoogle: signGoogleAuth,imagePath: 'assets/google.png'),
+                      //     const SizedBox(width: 25,),
+                      //     ImageLogin(signGoogle: signGoogleAuth,imagePath:'assets/iphone.png'),
+                      //   ],
+                      // )
                       
                     ],
                   ),
