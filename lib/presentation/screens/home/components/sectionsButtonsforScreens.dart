@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../env/environment.dart';
+
 
 
 
@@ -50,7 +52,7 @@ class HomeScreenAnimatedState extends ConsumerState<HomeScreenAnimated> {
       Icon(Icons.settings,size: 30,),
     ];
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text("CuteApp") , actions: [IconButton(onPressed: signUserOut, icon: Icon(Icons.logout))],
+      appBar: AppBar(centerTitle: true, title: Text(Environment.APP_NAME) , actions: [IconButton(onPressed: signUserOut, icon: Icon(Icons.logout))],
       ),
       backgroundColor: colorTheme.primary,
       body: screens[indexInitial],
@@ -66,7 +68,7 @@ class HomeScreenAnimatedState extends ConsumerState<HomeScreenAnimated> {
           
           // color: Colors.blue,
           animationCurve: Curves.easeInOut,
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           // height: 60,
           index: indexInitial,   
           items: items,

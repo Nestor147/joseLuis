@@ -12,7 +12,7 @@ class ChurchScreen extends ConsumerStatefulWidget {
 class ChurchScreenState extends ConsumerState<ChurchScreen> {
   List listResourcesFor = [
     ["CUNA","0 a 3 años ", "assets/cuna.png", '/cuna'],
-    ["INFANTE","3 a 5 años ", "assets/infantes.png", '/infante'],
+    ["INFANTE","3 a 5 años ", "assets/infantes.png", '/login'],
     ["PRIMARIOS","6 a 9 años ", "assets/primarios.png", '/primarios'],
     ["INTERMEDIARIO","10 a 12 años", "assets/intermediarios.png",'/intermediarios'],
     ["JUVENILES","15 a 18 años ", "assets/juveniles.png", '/juveniles'],

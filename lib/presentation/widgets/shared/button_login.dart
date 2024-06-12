@@ -1,3 +1,4 @@
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,10 +7,10 @@ class ButtonLoginWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final Color color;
   const ButtonLoginWidget({
-    super.key,
-   required this.text, 
-   required this.onPressed, 
-    this.color=const Color.fromARGB(255, 3, 30, 52)});
+  super.key,
+  required this.text, 
+  required this.onPressed, 
+  this.color=const Color.fromARGB(255, 3, 30, 52)});
 
   
 
@@ -20,7 +21,9 @@ class ButtonLoginWidget extends StatelessWidget {
           height: 64,                       
             child: CupertinoButton(
               borderRadius: BorderRadius.circular(10),
-              color: color,
+              // color: color,
+              // FIXME: FM 6.11.24
+              color: colorSDATheme,
               onPressed: onPressed,
               child: Text(
                 text,

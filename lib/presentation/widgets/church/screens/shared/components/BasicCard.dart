@@ -17,7 +17,10 @@ class _BasicCardState extends State<BasicCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){context.push(widget.screenPath);},
+      onTap: (){
+        context.push(widget.screenPath);
+      },
+      // onTap: (){ context.pushReplacementNamed(widget.screenPath); },
       child: Column(
         children: [
           Container(
