@@ -1,4 +1,6 @@
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
+import 'package:cuteapp/config/helpers/models/document.dart';
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -48,7 +50,7 @@ class _VideoViewScreenState extends State<VideoViewScreen> {
           appBar: isLandscape
               ? null
               : AppBar(
-                  title: Text(widget.content.name,style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
+                  title: Text(widget.content.name,style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
                 ),
           body: Center(
             child: LayoutBuilder(

@@ -1,43 +1,8 @@
-enum ContentType {
-  Audio, Video, Image, Url, Pdf
-}
-
-class Content {
-  final int id;
-  final String name;
-  final String content;
-  final ContentType contentType;
-
-  Content({
-    required this.id,
-    required this.name,
-    required this.content,
-    required this.contentType
-  });
-}
-
-class Section {
-  final String name;
-  final List<Content> contents;
-
-  Section({
-    required this.name,
-    required this.contents,
-  });
-}
-
-class Category {
-  final String name;
-  final List<Section> sections;
-
-  Category({
-    required this.name,
-    required this.sections,
-  });
-}
 
 
-  List<Content> lecciones = [
+  import 'package:cuteapp/config/helpers/models/document.dart';
+
+List<Content> leccionesPrimarios = [
     Content(id: 4, name: 'Lección 1. Jesús, el Siervo (06 de abril) Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-L01.pdf', contentType: ContentType.Pdf),
     Content(id: 5, name: 'Lección 2. Simón carga la cruz de Jesús (13 de abril) Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-L02.pdf', contentType: ContentType.Pdf),
     Content(id: 6, name: 'Lección 3. El día que Jesús murió (20 de abril) Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-L03.pdf', contentType: ContentType.Pdf),
@@ -67,7 +32,7 @@ class Category {
     Content(id: 32, name: 'Lección 13. Balaam y el asna que hablaba (29 de junio) Maestro', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Maestro/P-20-Q2-S-L13-T.pdf', contentType: ContentType.Pdf),
   ];
 
-  List<Content> material = [
+  List<Content> materialPrimarios = [
      Content(id: 1, name: 'Actividades Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-Activities.pdf', contentType: ContentType.Pdf),
     Content(id: 2, name: 'Versiculos Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-MemoryVerses.pdf', contentType: ContentType.Pdf),
     Content(id: 3, name: 'Intro Alumno', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/Alumno/P-20-Q2-S-L00.pdf', contentType: ContentType.Pdf),
@@ -78,7 +43,7 @@ class Category {
     Content(id: 35, name: 'Cuaderno para colorear', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Primarios/2do%202020/2do._trimestre_-_colorear_.pdf', contentType: ContentType.Pdf),
   ];
 
-List<Content> multimedia = [
+List<Content> multimediaPrimarios = [
   Content(
     id: 40,
     name: 'p01 intro primarios',

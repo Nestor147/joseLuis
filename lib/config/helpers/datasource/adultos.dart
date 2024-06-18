@@ -1,42 +1,8 @@
-enum ContentType {
-  Audio, Video, Image, Url, Pdf
-}
 
-class Content {
-  final int id;
-  final String name;
-  final String content;
-  final ContentType contentType;
 
-  Content({
-    required this.id,
-    required this.name,
-    required this.content,
-    required this.contentType
-  });
-}
+  import 'package:cuteapp/config/helpers/models/document.dart';
 
-class Section {
-  final String name;
-  final List<Content> contents;
-
-  Section({
-    required this.name,
-    required this.contents,
-  });
-}
-
-class Category {
-  final String name;
-  final List<Section> sections;
-
-  Category({
-    required this.name,
-    required this.sections,
-  });
-}
-
-  List<Content> lecciones = [
+List<Content> leccionesAdultos = [
     Content(id: 1, name: 'Lección 1. La guerra detrás de todas las guerras  6 de abril', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/Leccion/2do%202024/_Leccion%2001%20Segundo%20Trimestre%202024.pdf', contentType: ContentType.Pdf),
     Content(id: 2, name: 'Lección 2. ¿Amor o egoísmo? Esa es la cuestión  13 de abril', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/Leccion/2do%202024/_Leccion%2002%20Segundo%20Trimestre%202024.pdf', contentType: ContentType.Pdf),
     Content(id: 3, name: 'Lección 3. La luz brilla en la oscuridad  20 de abril', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/Leccion/2do%202024/_Leccion%2003%20Segundo%20Trimestre%202024.pdf', contentType: ContentType.Pdf),
@@ -52,16 +18,29 @@ class Category {
     Content(id: 13, name: 'Lección 13. El triunfo del amor de Dios  29 de junio', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/Leccion/2do%202024/_Leccion%2013%20Segundo%20Trimestre%202024.pdf', contentType: ContentType.Pdf),
   ];
 
-  List<Content> material = [];
+  List<Content> materialAdulto = [];
 
   List<Content> extras = [
       Content(id: 22, name: ' Leccion-completa-PDF-Segundo-Trimestre-2024', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/Leccion/2do%202024/Leccion-completa-PDF-Segundo-Trimestre-2024.pdf', contentType: ContentType.Pdf),
 
    
   ];
+ List<Content>multimediaAudiosAdultos=[
 
-  Section leccionesSection = Section(name: 'Lecciones', contents: lecciones);
-  Section materialSection = Section(name: 'Material', contents: material);
+  ];
+  List<Content>multimediaVideosAdultos=[
+ Content(
+      id: 25,
+      name: ' El Conflicto Inminente',
+      content: 'https://www.youtube.com/watch?v=MbgUNfH_t8I',
+      contentType: ContentType.Video
+    ),
+   
+  ];
+
+
+  Section leccionesSection = Section(name: 'Lecciones', contents: leccionesAdultos);
+  Section materialSection = Section(name: 'Material', contents: materialAdulto);
   Section extrasSection = Section(name: 'Extras', contents: extras);
 
   Category leccionAdultosCategory = Category(

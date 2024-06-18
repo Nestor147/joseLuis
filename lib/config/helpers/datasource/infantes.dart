@@ -1,43 +1,8 @@
-enum ContentType {
-  Audio, Video, Image, Url, Pdf
-}
-
-class Content {
-  final int id;
-  final String name;
-  final String content;
-  final ContentType contentType;
-
-  Content({
-    required this.id,
-    required this.name,
-    required this.content,
-    required this.contentType
-  });
-}
-
-class Section {
-  final String name;
-  final List<Content> contents;
-
-  Section({
-    required this.name,
-    required this.contents,
-  });
-}
-
-class Category {
-  final String name;
-  final List<Section> sections;
-
-  Category({
-    required this.name,
-    required this.sections,
-  });
-}
 
 
-  List<Content> lecciones = [
+  import 'package:cuteapp/config/helpers/models/document.dart';
+
+List<Content> leccionesInfantes = [
   Content(
     id: 4,
     name: 'Lección 1. El método “tú primero” (06 de abril)-alumnos',
@@ -197,7 +162,7 @@ class Category {
 ];
 
 
-  List<Content> materiales = [
+  List<Content> materialesInfantes = [
     Content(
       id: 1,
       name: 'Introducción-alumno',
@@ -259,7 +224,7 @@ class Category {
       contentType: ContentType.Pdf
     )
   ];
-  List<Content> multimedia = [
+  List<Content> multimediaInfantes = [
   Content(
     id: 24,
     name: 'i02 amigos por jesus',

@@ -1,4 +1,5 @@
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,14 +17,10 @@ class _SelectVideosOrAudioScreenInfanteState extends State<SelectVideosOrAudioSc
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Multimedia",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor:Color.fromARGB(255, 11, 35, 86) ,),
+      appBar: AppBar(title: Text("Multimedia",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor:colorSDATheme,),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [const Color.fromARGB(255, 219, 235, 248), Color.fromARGB(255, 11, 35, 86)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+        
         ),
         child: Center(
           child: Column(
@@ -32,21 +29,16 @@ class _SelectVideosOrAudioScreenInfanteState extends State<SelectVideosOrAudioSc
             children: [
               GestureDetector(
                 onTap: (){
-                  context.push('/multimediVideoCuna');
+                  context.push('/multimediVideoInfante');
                 },
                 child: Container(
                   width: 200,
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 11, 35, 86),
-                    borderRadius: BorderRadius.circular(20),
+                    color: colorSDATheme,
+             
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      ),
+                
                     ],
                   ),
                   child: Column(
@@ -62,21 +54,16 @@ class _SelectVideosOrAudioScreenInfanteState extends State<SelectVideosOrAudioSc
               SizedBox(height: 20),
               GestureDetector(
                 onTap: (){
-                  context.push('/multimediaAudioCuna');
+                  context.push('/multimediaAudioInfante');
                 },
                 child: Container(
                   width: 200,
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 11, 35, 86),
-                    borderRadius: BorderRadius.circular(20),
+                    color: colorSDATheme,
+       
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      ),
+                    
                     ],
                   ),
                   child: Column(

@@ -1,6 +1,8 @@
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/shared/components/BasicCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ChurchScreen extends ConsumerStatefulWidget {
   const ChurchScreen({super.key});
@@ -11,20 +13,20 @@ class ChurchScreen extends ConsumerStatefulWidget {
 
 class ChurchScreenState extends ConsumerState<ChurchScreen> {
   List listResourcesFor = [
-    ["CUNA","0 a 3 años ", "assets/cuna.png", '/cuna'],
-    ["INFANTE","3 a 5 años ", "assets/infantes.png", '/login'],
-    ["PRIMARIOS","6 a 9 años ", "assets/primarios.png", '/primarios'],
-    ["INTERMEDIARIO","10 a 12 años", "assets/intermediarios.png",'/intermediarios'],
-    ["JUVENILES","15 a 18 años ", "assets/juveniles.png", '/juveniles'],
-    ["ADULTOS","19 a 100 años  ", "assets/adultos.png", '/adultos'],
+    ["CUNA","recursos", "assets/cuna.png", '/cuna'],
+    ["INFANTE","recursos", "assets/infantes.png", '/infante'],
+    ["PRIMARIOS","recursos", "assets/primarios.png", '/primarios'],
+    ["INTERMEDIARIO","recursos", "assets/intermediarios.png",'/intermediarios'],
+    ["JUVENILES","recursos", "assets/juveniles.png", '/juveniles'],
+    ["ADULTOS","recursos", "assets/adultos.png", '/adultos'],
   ];
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Recursos Adventistas"),
-        centerTitle: true,
+        title: const Text("Recuersos",style: TextStyle(color: Colors.white),),
+        centerTitle: true,backgroundColor:colorSDATheme,leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){context.push("/");},)
       ),
       body: SingleChildScrollView(
         child: Padding(

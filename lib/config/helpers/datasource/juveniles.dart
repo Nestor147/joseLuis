@@ -1,43 +1,8 @@
-enum ContentType {
-  Audio, Video, Image, Url, Pdf
-}
-
-class Content {
-  final int id;
-  final String name;
-  final String content;
-  final ContentType contentType;
-
-  Content({
-    required this.id,
-    required this.name,
-    required this.content,
-    required this.contentType
-  });
-}
-
-class Section {
-  final String name;
-  final List<Content> contents;
-
-  Section({
-    required this.name,
-    required this.contents,
-  });
-}
-
-class Category {
-  final String name;
-  final List<Section> sections;
-
-  Category({
-    required this.name,
-    required this.sections,
-  });
-}
 
 
-  List<Content> lecciones = [
+  import 'package:cuteapp/config/helpers/models/document.dart';
+
+List<Content> leccionesJuveniles = [
      Content(id: 1, name: 'Leccion 1 Rechazando el llamado para servir', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_L01.pdf', contentType: ContentType.Pdf),
     Content(id: 2, name: 'Leccion 2 El turno de los profetas', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_L02.pdf', contentType: ContentType.Pdf),
     Content(id: 3, name: 'Leccion 3 Milagros', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_L03.pdf', contentType: ContentType.Pdf),
@@ -52,10 +17,48 @@ class Category {
     Content(id: 12, name: 'Leccion 12 Tres reyes diferentes', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_L12.pdf', contentType: ContentType.Pdf),
     Content(id: 13, name: 'Leccion 13 Limpiando la casa', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_L13.pdf', contentType: ContentType.Pdf),];
 
-  List<Content> material = [
+  List<Content> materialJuveniles = [
     Content(id: 14, name: 'introduccion', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Juveniles/2do2024/A/_Intro.pdf', contentType: ContentType.Pdf),
   ];
-  List<Content> multimedia = [];
+    List<Content>multimediaVideosJuveniles=[
+ Content(
+      id: 43,
+      name: 'El gran conflicto',
+      content: 'https://www.youtube.com/watch?v=lgtnJT6pA_o',
+      contentType: ContentType.Video
+    ),
+    Content(
+      id: 43,
+      name: 'Jesús va a la iglesia',
+      content: 'https://www.youtube.com/watch?v=yLFcIpdWLLY',
+      contentType: ContentType.Video
+    ),
+    Content(
+      id: 43,
+      name: 'El gran conflicto 2',
+      content: 'https://www.youtube.com/watch?v=JJvDrBp8Lz8',
+      contentType: ContentType.Video
+    ),
+    Content(
+      id: 43,
+      name: 'El gran conflicto 3',
+      content: 'https://www.youtube.com/watch?v=oYkgaelmPqY',
+      contentType: ContentType.Video
+    ),
+    Content(
+      id: 43,
+      name: 'El gran conflicto 4',
+      content: 'https://www.youtube.com/watch?v=KSXHnqFKDrc',
+      contentType: ContentType.Video
+    ),
+    Content(
+      id: 43,
+      name: 'El gran conflicto 5',
+      content: 'https://www.youtube.com/watch?v=Y6hSlVW-_Uc',
+      contentType: ContentType.Video
+    ),
+  ];
+  List<Content> multimediaJuveniles = [];
   List<Content> extras = [];
 
 

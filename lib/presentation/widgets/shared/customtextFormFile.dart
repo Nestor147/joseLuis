@@ -23,7 +23,7 @@ class CustomTextFormField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: colorTheme.background,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(1),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -48,13 +48,13 @@ class CustomTextFormField extends StatelessWidget {
             colorSDATheme :
             const Color(0xffc5c5c5),),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(2),
               borderSide: const BorderSide(
                 color: Color(0xffc5c5c5),
               width: 2.0),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(2),
               borderSide: const BorderSide(
                 // FIXME: FM 6.11.24
                 // color:Colors.blue,

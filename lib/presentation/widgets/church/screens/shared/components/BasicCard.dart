@@ -1,3 +1,4 @@
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,24 +26,10 @@ class _BasicCardState extends State<BasicCard> {
         children: [
           Container(
         width: double.infinity,
-        height: 150,
+        height: 100,
         decoration:  BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(40), // Top-left radius
-            topRight: Radius.circular(5), // Top-right radius
-            bottomLeft: Radius.circular(0), // Bottom-left radius
-            bottomRight: Radius.circular(50), // Bottom-right radius
-          ),
-          image: DecorationImage(
-            image: AssetImage(widget.imageURL),
-            fit: BoxFit.cover,
-            opacity: 00.4
-          ),
-          gradient: const LinearGradient(
-            begin: Alignment.center,
-            end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(31, 80, 62, 62), Color.fromARGB(206, 77, 53, 53)],
-          ),
+          color: colorSDATheme,
+         
         ),
         child:  Padding(
           padding: const EdgeInsets.fromLTRB(8.0, 0.5, 10, 5),
@@ -50,12 +37,10 @@ class _BasicCardState extends State<BasicCard> {
           mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ListTile(
-                leading: const CircleAvatar(   
-                 backgroundImage: AssetImage("assets/logoIglesia.jpg"),
-        ) ,
-                title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 11, 35, 86),fontSize:25)),
-                subtitle: Text(widget.age,style: const TextStyle(fontWeight: FontWeight.bold ,color: Color.fromARGB(255, 11, 35, 86),fontSize:20,fontFamily:AutofillHints.streetAddressLevel1)),
-                trailing: const Icon(Icons.church,size: 40,color: Color.fromARGB(255, 11, 35, 86),),
+                leading:const Icon(Icons.church,size: 20,color: Colors.white,) ,
+                title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize:18)),
+                subtitle: Text(widget.age,style: const TextStyle(fontWeight: FontWeight.bold ,color:Colors.white,fontSize:15,fontFamily:AutofillHints.streetAddressLevel1)),
+                trailing: const Icon(Icons.arrow_forward,size: 20,color: Colors.white,),
       
               )
             ],

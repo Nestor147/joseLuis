@@ -1,19 +1,46 @@
 
 // import 'package:cuteapp/presentation/screens/auth/mainpage.dart';
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
-import 'package:cuteapp/presentation/screens/auth/mainpage.dart';
-import 'package:cuteapp/presentation/widgets/CrearRecetas/createReceta_screen.dart';
-import 'package:cuteapp/presentation/widgets/CrearRecetas/recetas_Screen.dart';
-import 'package:cuteapp/presentation/widgets/DesidePorTi/decidePorti_screen.dart';
-import 'package:cuteapp/presentation/widgets/anecdotasGraciosas/anecdotas_screen.dart';
-import 'package:cuteapp/presentation/widgets/anecdotasGraciosas/shared/add_adnecdote.dart';
-import 'package:cuteapp/presentation/widgets/anecdotasGraciosas/shared/edit_adnecdote.dart';
-import 'package:cuteapp/presentation/widgets/busquedas/busqueda_Screen.dart';
+import 'package:cuteapp/config/helpers/models/document.dart';
+import 'package:cuteapp/config/services/local_storage.dart';
+
+import 'package:cuteapp/presentation/screens/auth/registerScreen.dart';
+
 import 'package:cuteapp/presentation/widgets/church/churchScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Adultos/adultosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Adultos/components/recursosadultos.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/screens/leccionAlumnosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/screens/leccionMaestrosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/screens/materialesScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/screens/multimediaVideosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Adultos/shared/selectVideosOrAudiosScreenCuna.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/multimediaVideosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/shared/selectVideosOrAudiosScreenCuna.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/leccionAlumnosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/leccionMaestrosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/materialesScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/misioneroScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/screens/multimediaVideosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Infantes/shared/selectVideosOrAudiosScreenCuna.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/screens/leccionAlumnosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/screens/leccionMaestrosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/screens/materialesScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/screens/multimediaVideosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Intermedios/shared/selectVideosOrAudiosScreenCuna.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/screens/leccionAlumnosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/screens/leccionMaestrosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/screens/materialesScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/screens/multimediaVideosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Juveniles/shared/selectVideosOrAudiosScreenCuna.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Primarios/screens/leccionAlumnosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Primarios/screens/leccionMaestrosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Primarios/screens/materialesScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Primarios/screens/multimediaAudiosScreen.dart';
+import 'package:cuteapp/presentation/widgets/church/screens/Primarios/shared/selectVideosOrAudiosScreenPrimario.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/shared/extrasScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/cunaScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/Cuna/screens/leccionAlumnosScreen.dart';
@@ -32,12 +59,9 @@ import 'package:cuteapp/presentation/widgets/church/screens/Primarios/components
 import 'package:cuteapp/presentation/widgets/church/screens/Primarios/primariosScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/shared/pdfViewScreen.dart';
 import 'package:cuteapp/presentation/widgets/church/screens/shared/videoPlayViewScreen.dart';
-import 'package:cuteapp/presentation/widgets/church/screens/shared/videoPlayViewScreen.dart';
-import 'package:cuteapp/presentation/widgets/crearImagenes/Image_Screen.dart';
-import 'package:cuteapp/presentation/widgets/crearImagenes/crearImagen_Screen.dart';
-import 'package:cuteapp/presentation/widgets/crearMusicas/Music_Screen.dart';
-import 'package:cuteapp/presentation/widgets/crearMusicas/createMusic_screen.dart';
-import 'package:cuteapp/presentation/widgets/momentosGraciosos/funnyMoment.dart';
+
+
+
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -49,100 +73,24 @@ part 'app_router.g.dart';
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(
-    initialLocation: '/',
+
+    initialLocation: (LocalStorage().getIsLoggedIn()) ? '/church' : '/',
   routes:[
 
       GoRoute(
       path: '/',
-      // builder: (context, state) => const    ExtrasScreen()),
-      builder: (context, state) => const    ChurchScreen()),
-      // builder: (context, state) => const    SelectVideosOrAudioScreen()),
-      // builder: (context, state) => const    UserHome()),
-    //TODO:   // builder: (context, state) => const MainPageScreen()),
+
+      // TODO: Change to MainPageScreen
+
+      builder: (context, state) => LoginScreen()),
+      GoRoute(
+      path: '/register',
+      builder: (context, state) => RegisterScreen()),
+
 
       GoRoute(
       path: '/church',
       builder: (context, state) => const    ChurchScreen()),
-        GoRoute(
-      path: '/anecdotas',
-      builder: (context, state) => const AnecdotasScreen()),
-
-        GoRoute(
-      path: '/editAnecdota',
-      builder: (context, state) =>  EditAnecdote()),
-
-     GoRoute(
-      path: '/crearAnecdota',
-      builder: (context, state) => const AddAnecdote()),
-      // builder: (context, state) => const AnecdotasScreen()),
-      // builder: (context, state) => const MainPageScreen()),
-    
-       GoRoute(
-      
-      path: '/createImage',
-      builder: (context, state) => const CreateImageScreen()),
-
-         GoRoute(
-      
-      path: '/createRecetas',
-      builder: (context, state) => const CreateRecetaScreen()),
-
-
-         GoRoute(
-      
-      path: '/createMusic',
-      builder: (context, state) => const CreateMusicScreen()),
-
-         GoRoute(
-      
-      path: '/decidePorti',
-      builder: (context, state) => const DecidePorTiScreen() ),
-
-    GoRoute(
-      
-      path: '/funnyMoment',
-      builder: (context, state) => const FunnyMoment()),
-
-
-       GoRoute(
-      
-      path: '/imageScreen',
-      builder: (context, state) => const ImageScreen()),
-
-       GoRoute(
-      
-      path: '/recetasScreen',
-      builder: (context, state) => const RecetasScreen()),
-
-
-       GoRoute(
-      
-      path: '/musicScreen',
-      builder: (context, state) => const MusicScreen()),
-      // builder: (context, state) => const MainPageScreen()),
-      // builder: (context, state) => const AnecdotasScreen()),
-      // builder: (context, state) => const HomeScreenAnimated()),
-    // GoRoute(
-    //   path: '/register',
-    // builder: (context, state) => const RegisterScreen()),
-      GoRoute(
-      path: '/userProfile',
-    builder: (context, state) =>  UserProfile()),
-
-          GoRoute(
-      path: '/userFavorite',
-    builder: (context, state) =>  UserFavorite()),
-
-          GoRoute(
-      path: '/userSearch',
-    builder: (context, state) => BusquedaScreen()),
-
-
-          GoRoute(
-      path: '/userSetting',
-    builder: (context, state) =>  UserSettings()),
-
-
   //TODO: CHURCH
     //Church
        GoRoute(
@@ -169,20 +117,12 @@ GoRouter appRouter(AppRouterRef ref) {
     builder: (context, state) =>  AdultosScreen()),
     
 
-    //recursos 
-    GoRoute(
-      path: '/leccion',
-    builder: (context, state) =>  LeccionAlumnosScreenCuna()),
-    //Cuna
-     GoRoute(
-      path: '/leccionMaestros',
-    builder: (context, state) =>  LeccionMaestrosScreenCuna()),
-     GoRoute(
-      path: '/material',
-    // builder: (context, state) =>  AudioPlayScreen()),
-    // builder: (context, state) =>  AudioPlayViewScreen()),
-    builder: (context, state) =>  MaterialScreenCuna()),
-     GoRoute(
+
+
+
+
+
+ GoRoute(
       path: '/video',
       builder: (context, state) {
           final content =state.extra as Content;
@@ -197,41 +137,48 @@ GoRouter appRouter(AppRouterRef ref) {
           return AudioPlayScreen(content: content);
         },
       ),
-     GoRoute(
-      path: '/misionero',
-    builder: (context, state) =>  MisioneroScreenCuna()),
-     GoRoute(
-      path: '/extras',
-    builder: (context, state) =>  ExtrasScreen()),
-
-       GoRoute(
+         GoRoute(
         path: '/pdfviewer',
         builder: (context, state) {
           final content =state.extra as Content;
           return PdfViewerScreen(content: content);
         },
       ),
+          GoRoute(
+      path: '/extras',
+    builder: (context, state) =>  ExtrasScreen()),
 
+
+
+    //recursos 
+    GoRoute(
+      path: '/leccionCuna',
+    builder: (context, state) =>  LeccionAlumnosScreenCuna()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosCuna',
+    builder: (context, state) =>  LeccionMaestrosScreenCuna()),
+     GoRoute(
+      path: '/materialCuna',
+    builder: (context, state) =>  MaterialScreenCuna()),
+    
+     GoRoute(
+      path: '/misioneroCuna',
+    builder: (context, state) =>  MisioneroScreenCuna()),
+ 
        GoRoute(
-        path: '/multimedia',
+        path: '/multimediaCuna',
         builder: (context, state) => SelectVideosOrAudioScreenCuna()
-        
       ),
-
         GoRoute(
           path: '/multimediaAudioCuna',
-
-        builder: (context, state) => MultimediaAudiosScreenCuna()
-        
+        builder: (context, state) => MultimediaAudiosScreenCuna()      
       ),
-
-        GoRoute(
-       
+        GoRoute(    
         path: '/multimediVideoCuna',
         
 
-        builder: (context, state) => MultimediaVideosScreenCuna()
-        
+        builder: (context, state) => MultimediaVideosScreenCuna()   
       ),
  
     //Cuna
@@ -239,11 +186,169 @@ GoRouter appRouter(AppRouterRef ref) {
      GoRoute(
       path: '/recursosInfantiles',
     builder: (context, state) =>  RecursosInfantiles()),
+    GoRoute(
+      path: '/leccionInfante',
+    builder: (context, state) =>  LeccionAlumnosScreenInfante()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosInfante',
+    builder: (context, state) =>  LeccionMaestrosScreenInfante()),
+     GoRoute(
+      path: '/materialInfante',
+    builder: (context, state) =>  MaterialScreenInfante()),
+    
+     GoRoute(
+      path: '/misioneroInfante',
+    builder: (context, state) =>  MisioneroScreenInfante()),
+ 
+       GoRoute(
+        path: '/multimediaInfante',
+        builder: (context, state) => SelectVideosOrAudioScreenInfante()
+      ),
+        GoRoute(
+          path: '/multimediaAudioInfante',
+        builder: (context, state) => MultimediaAudiosScreenInfante()      
+      ),
+        GoRoute(    
+        path: '/multimediVideoInfante',
+        
+
+        builder: (context, state) => MultimediaVideosScreenInfante()   
+      ),
+
+
+
+
+
+
+    //infante
 
 
      GoRoute(
       path: '/recursosPrimarios',
     builder: (context, state) =>  RecursosPrimarios()),
+ GoRoute(
+      path: '/leccionPrimarios',
+    builder: (context, state) =>  LeccionAlumnosScreenPrimarios()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosPrimarios',
+    builder: (context, state) =>  LeccionMaestrosScreenPrimarios()),
+     GoRoute(
+      path: '/materialPrimarios',
+    builder: (context, state) =>  MaterialScreenPrimarios()),
+    
+ 
+ 
+       GoRoute(
+        path: '/multimediaPrimarios',
+        builder: (context, state) => SelectVideosOrAudioScreenPrimarios()
+      ),
+        GoRoute(
+          path: '/multimediaAudioPrimarios',
+        builder: (context, state) => MultimediaAudiosScreenPrimarios()      
+      ),
+        GoRoute(    
+        path: '/multimediVideoPrimarios',
+        
+
+        builder: (context, state) => MultimediaVideosScreenInfante()   
+      ),
+
+    //primarios
+      GoRoute(
+      path: '/recursosIntermediario',
+    builder: (context, state) =>  RecursosInternmedios()),
+ GoRoute(
+      path: '/leccionIntermediario',
+    builder: (context, state) =>  LeccionAlumnosScreenIntermedio()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosIntermediario',
+    builder: (context, state) =>  LeccionMaestrosScreenIntermedio()),
+     GoRoute(
+      path: '/materialIntermediario',
+    builder: (context, state) =>  MaterialScreenIntermedio()),
+    
+ 
+ 
+       GoRoute(
+        path: '/multimediaIntermediario',
+        builder: (context, state) => SelectVideosOrAudioScreenIntermedio()
+      ),
+        GoRoute(
+          path: '/multimediaAudioIntermediario',
+        builder: (context, state) => MultimediaAudiosScreenIntermedio()      
+      ),
+        GoRoute(    
+        path: '/multimediVideoIntermediario',
+        builder: (context, state) => MultimediaVideosScreenIntermedio()   
+      ),
+
+
+
+
+    //intermediarios
+
+       GoRoute(
+      path: '/recursosJuveniles',
+    builder: (context, state) =>  RecursosJuveniles()),
+ GoRoute(
+      path: '/leccionJuveniles',
+    builder: (context, state) =>  LeccionAlumnosScreenJuveniles()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosJuveniles',
+    builder: (context, state) =>  LeccionMaestrosScreenJuveniles()),
+     GoRoute(
+      path: '/materialJuveniles',
+    builder: (context, state) =>  MaterialScreenJuveniles()),
+    
+       GoRoute(
+        path: '/multimediaJuveniles',
+        builder: (context, state) => SelectVideosOrAudioScreenJuveniles()
+      ),
+        GoRoute(
+          path: '/multimediaAudioJuveniles',
+        builder: (context, state) => MultimediaAudiosScreenJuveniles()      
+      ),
+        GoRoute(    
+        path: '/multimediVideoJuveniles',
+        builder: (context, state) => MultimediaVideosScreenJuveniles()   
+      ),
+
+    
+    //juveniles
+
+     GoRoute(
+      path: '/recursosAdultos',
+    builder: (context, state) =>  RecursosAdultos()),
+ GoRoute(
+      path: '/leccionAdultos',
+    builder: (context, state) =>  LeccionAlumnosScreenAdultos()),
+    //Cuna
+     GoRoute(
+      path: '/leccionMaestrosAdultos',
+    builder: (context, state) =>  LeccionMaestrosScreenAdultos()),
+     GoRoute(
+      path: '/materialAdultos',
+    builder: (context, state) =>  MaterialScreenAdultos()),
+    
+       GoRoute(
+        path: '/multimediaAdultos',
+        builder: (context, state) => SelectVideosOrAudioScreenAdultos()
+      ),
+        GoRoute(
+          path: '/multimediaAudioAdultos',
+        builder: (context, state) => MultimediaAudiosScreenAdultos()      
+      ),
+        GoRoute(    
+        path: '/multimediVideoAdultos',
+        builder: (context, state) => MultimediaVideosScreenAdultos()   
+      ),
+
+
+    //Adultos 
 
 
     GoRoute(

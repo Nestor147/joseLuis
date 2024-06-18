@@ -1,4 +1,5 @@
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +15,7 @@ class _MultimediaAudiosScreenCunaState extends State<MultimediaAudiosScreenCuna>
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Audios',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
+        title: Text('Audios',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -25,7 +26,7 @@ class _MultimediaAudiosScreenCunaState extends State<MultimediaAudiosScreenCuna>
               padding: EdgeInsets.all(5),
               child: ListTile(
                 
-                tileColor: Color.fromARGB(255, 11, 35, 86),
+                tileColor: colorSDATheme,
                 focusColor: Colors.red,
                 hoverColor: Colors.green,
                 shape:BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),

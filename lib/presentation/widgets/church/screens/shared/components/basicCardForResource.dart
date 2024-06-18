@@ -1,3 +1,4 @@
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,58 +32,24 @@ class _CardForResourceState extends State<CardForResource> {
           context.push(widget.screenPath);
         },
         child: Container(
+      
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: colorSDATheme),
+          height: 100,
           // width: double.infinity,
-          height: 350,
-          child: Stack(
-            clipBehavior: Clip.none, // Permite que los hijos se salgan del Stack
+      
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+          // Permite que los hijos se salgan del Stack
             children: [
-              Container(  
-                height: 300,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage(widget.imageURL),
-                    fit: BoxFit.cover,
-                    opacity: 0.22,
-                  ),
-                  gradient: const LinearGradient(
-                    begin: Alignment.center,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromARGB(31, 80, 62, 62),
-                      Color.fromARGB(206, 77, 53, 53)
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                top: -20,
-                left: 55,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 11, 35, 86),
-                    borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: Center(
-                    child: widget.iconData,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 75,
-                left: 19,
-                child: Container(
+          
+             
+              Container(
                   width: 130,
-                  height: 60,
+          
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
+                
                     borderRadius: BorderRadius.circular(12)
                   ),
                   child: Center(
@@ -90,22 +57,18 @@ class _CardForResourceState extends State<CardForResource> {
                       widget.title,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 11, 35, 86),
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                top: 140,   
-                left: 19,
-                child: Container(
+            Container(
                   width: 130,
-                  height: 100,
+                 
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(0, 0, 0, 0),
+                
                     borderRadius: BorderRadius.circular(12)
                   ),
                   child: Center(
@@ -113,13 +76,14 @@ class _CardForResourceState extends State<CardForResource> {
                       widget.subtitle,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 11, 35, 86),
+                        color: Colors.white,
                         fontSize: 18,
                       ),
                     ),
                   ),
                 ),
-              ),
+           
+
             ],
           ),
         ),

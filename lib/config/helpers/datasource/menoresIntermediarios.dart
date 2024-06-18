@@ -1,43 +1,8 @@
-enum ContentType {
-  Audio, Video, Image, Url, Pdf
-}
-
-class Content {
-  final int id;
-  final String name;
-  final String content;
-  final ContentType contentType;
-
-  Content({
-    required this.id,
-    required this.name,
-    required this.content,
-    required this.contentType
-  });
-}
-
-class Section {
-  final String name;
-  final List<Content> contents;
-
-  Section({
-    required this.name,
-    required this.contents,
-  });
-}
-
-class Category {
-  final String name;
-  final List<Section> sections;
-
-  Category({
-    required this.name,
-    required this.sections,
-  });
-}
 
 
-  List<Content> menoresLecciones = [
+  import 'package:cuteapp/config/helpers/models/document.dart';
+
+List<Content> menoresLeccionesIntermedios = [
     Content(id: 1, name: 'Lección 1 Contento en mi iglesia (Menores)', content: 'https://mirecursoadventista.com/wp-content/uploads/2024/05/M-L01-T2-24.pdf', contentType: ContentType.Pdf),
     Content(id: 2, name: 'Lección 2 Compartiendo la palabra (Menores)', content: 'https://mirecursoadventista.com/wp-content/uploads/2024/05/M-L02-T2-24.pdf', contentType: ContentType.Pdf),
     Content(id: 3, name: 'Lección 3 Saulo se queda ciego (Menores)', content: 'https://mirecursoadventista.com/wp-content/uploads/2024/05/M-L03-T2-24.pdf', contentType: ContentType.Pdf),
@@ -53,7 +18,7 @@ class Category {
     Content(id: 13, name: 'Lección 13 ¡Bienvenido otra vez, Jesús! (Menores)', content: 'https://mirecursoadventista.com/wp-content/uploads/2024/05/M-L13-T2-24.pdf', contentType: ContentType.Pdf),
   ];
 
-  List<Content> interLecciones = [
+  List<Content> interLeccionesIntermedios = [
     Content(id: 14, name: 'Lección 1 Ios tres gerentes (Intermediarios)', content: 'https://recursosdesperanza.blogspot.com/2020/03/intermediarios-a-t2-leccion-01.html', contentType: ContentType.Pdf),
     Content(id: 15, name: 'Lección 2 El Servidor supremo (Intermediarios)', content: 'https://recursosdesperanza.blogspot.com/2020/04/intermediarios-a-t2-leccion-02.html', contentType: ContentType.Url),
     Content(id: 16, name: 'Lección 3 El amor en una cruz (Intermediarios)', content: 'https://recursosdesperanza.blogspot.com/2020/03/intermediarios-a-t2-leccion-03.html', contentType: ContentType.Url),
@@ -70,7 +35,7 @@ class Category {
   ];
 
 
-  List<Content> material = [
+  List<Content> materialIntermedios = [
     Content(id: 28, name: 'Manual Menores 2T Año A DIA', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Menores/2do2024/Manual%20Menores%202T%20A%C3%B1o%20A%20DIA.pdf', contentType: ContentType.Pdf),
     Content(id: 29, name: 'Folleto Menores 2T AñoA DIA', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Menores/2do2024/Folleto%20Menores%202T%20A%C3%B1oA%20DIA.pdf', contentType: ContentType.Pdf),
     Content(id: 30, name: 'Folleto Intermediarios 2T Año A DIA', content: 'https://s3.us-east-2.wasabisys.com/rebiblicos/Escuela%20Sabatica/InfantilesyJuveniles/Intermediarios/2do2024/Folleto%20Intermediarios%202T%20A%C3%B1o%20A%20DIA.pdf', contentType: ContentType.Pdf),
@@ -78,7 +43,7 @@ class Category {
 
   ];
 
-  List<Content> multimedia = [
+  List<Content> multimediaIntermedios = [
   Content(
     id: 34,
     name: 'int01 intro intermediarios',
@@ -224,6 +189,35 @@ class Category {
     contentType: ContentType.Audio
   ),
 ];
+
+
+List<Content> multimediaVideosIntermediarios = [
+
+    Content(
+      id: 32,
+     name: 'Clase INTERMEDIARIOS',
+     content: 'https://www.youtube.com/watch?v=h6x5GVFo86E',
+      contentType: ContentType.Video
+      ),
+      Content(
+        id: 32,
+         name: 'Lección Intermediarios',
+     content: 'https://www.youtube.com/watch?v=V0qbwio9Dyg',
+      contentType: ContentType.Video
+      ),
+      Content(
+        id: 32, 
+        name: 'Cantos Primarios Completos',
+     content: 'https://www.youtube.com/watch?v=KIAPQO5wPyA',
+      contentType: ContentType.Video
+      ),
+      Content(
+        id: 32,
+         name: 'PRETRIMESTRA',
+     content: 'https://www.youtube.com/watch?v=kwaOS1yZCvI',
+      contentType: ContentType.Video
+      ),
+  ];
 
   List<Content> extras = [
     Content(id: 32, name: 'Llavemaestra', content: 'https://drive.google.com/file/d/1YEwc9g7IYSAHhCLq1-WUE7lTq3Ug9-GI/view', contentType: ContentType.Pdf),

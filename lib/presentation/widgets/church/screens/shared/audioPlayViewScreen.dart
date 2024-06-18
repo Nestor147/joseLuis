@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cuteapp/config/helpers/datasource/cuna.dart';
+import 'package:cuteapp/config/helpers/models/document.dart';
+import 'package:cuteapp/config/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 
 class AudioPlayScreen extends StatefulWidget {
@@ -43,42 +45,17 @@ late AudioPlayer player = AudioPlayer();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Audio",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 11, 35, 86),
+        title:  Text("Audio",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
       ),
       body: Container(
         decoration: BoxDecoration(
-           gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  // Colors.red,
-                  // Colors.orange,
-                  Color.fromARGB(255, 8, 144, 249),
-
-                  Color.fromARGB(255, 178, 197, 221),
-                  // Colors.green,
-                  // Colors.blue,
-                  // Colors.purple,
-                ],
-                stops: [
-                  0.0,1.0
-                ],tileMode: TileMode.clamp
-              ),
+         
         ),
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
         
-         Padding(
-           padding: const EdgeInsets.all(20.0),
-           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset('assets/logoIglesia.jpg',
-            width: double.infinity,
-            fit: BoxFit.cover,),
-                   ),
-         ),
         const SizedBox(height: 20,),
         Text(widget.content.name, textAlign:TextAlign.center,style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 20),),
         const SizedBox(height: 32,),
@@ -178,21 +155,21 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               onPressed: _isPlaying ? null : _play,
               iconSize: 48.0,
               icon: const Icon(Icons.play_arrow),
-              color: Color.fromARGB(255, 11, 35, 86),
+              color: colorSDATheme,
             ),
             IconButton(
               key: const Key('pause_button'),
               onPressed: _isPlaying ? _pause : null,
               iconSize: 48.0,
               icon: const Icon(Icons.pause),
-              color:Color.fromARGB(255, 11, 35, 86),
+              color:colorSDATheme,
             ),
             IconButton(
               key: const Key('stop_button'),
               onPressed: _isPlaying || _isPaused ? _stop : null,
               iconSize: 48.0,
               icon: const Icon(Icons.stop),
-              color: Color.fromARGB(255, 11, 35, 86),
+              color: colorSDATheme,
             ),
           ],
         ),

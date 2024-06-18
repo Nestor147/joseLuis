@@ -21,8 +21,6 @@ class ButtonLoginWidget extends StatelessWidget {
           height: 64,                       
             child: CupertinoButton(
               borderRadius: BorderRadius.circular(10),
-              // color: color,
-              // FIXME: FM 6.11.24
               color: colorSDATheme,
               onPressed: onPressed,
               child: Text(
