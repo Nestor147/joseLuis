@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 
 const List<Color> themesColor=[
-  Colors.orange,
-  // Colors.black,
-  Colors.green,
-  Color.fromARGB(255, 11, 140, 232),
- Color.fromRGBO(1, 153, 255, 1),
-  Colors.pinkAccent,
-  Colors.teal,
-  Colors.red,
-  Colors.yellow,
-  Colors.greenAccent,
-  Colors.deepOrange
+  Colors.black,
+
 ];
 
-const colorTheme =Color.fromRGBO(1, 153, 255, 1);
-const colorSDATheme = Color.fromRGBO(1, 153, 255, 1);
+const colorSDATheme = Color.fromRGBO(0, 0, 0, 1);
+const colorFondo = Color.fromRGBO(252, 248, 3, 1);
 class AppthemeNew{
   final int selectedColor ;
   final bool isDarkMode ;

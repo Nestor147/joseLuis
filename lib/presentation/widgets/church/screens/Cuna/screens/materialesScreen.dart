@@ -14,8 +14,9 @@ class _MaterialScreenCunaState extends State<MaterialScreenCuna> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: colorFondo,
       appBar: AppBar(
-        title: Text('Materiales',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
+        title: Text('Materiales',style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: EdgeInsets.all(15),

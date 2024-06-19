@@ -18,10 +18,6 @@ import 'package:hive/hive.dart';
 Future<void> main() async {
   Intl.defaultLocale='es_ES';
   await initializeDateFormatting();
- // WidgetsFlutterBinding.ensureInitialized();
- // MainModule.init();
- // WidgetsFlutterBinding.ensureInitialized();
- // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
  WidgetsFlutterBinding.ensureInitialized();
  await LocalStorage().init();
  final isLogged=LocalStorage().getIsLoggedIn();
@@ -51,7 +47,7 @@ class MyApp extends ConsumerWidget{
         Locale('en','US')
       ],
       title: "Cute App",
-     //theme: AppthemeNew(isDarkMode:isDarkMode ,selectedColor:2 ).getTheme(),
+    //  theme: AppthemeNew(isDarkMode:isDarkMode ,selectedColor:0 ).getTheme(),
       theme: appTheme.getTheme(),
       // darkTheme: AppTheme.dark,
       // themeMode: ThemeMode.light,

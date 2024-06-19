@@ -45,7 +45,7 @@ late AudioPlayer player = AudioPlayer();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Audio",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
+        title:  Text(widget.content.name,style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor: Colors.white,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -57,7 +57,6 @@ late AudioPlayer player = AudioPlayer();
         children: [
         
         const SizedBox(height: 20,),
-        Text(widget.content.name, textAlign:TextAlign.center,style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 20),),
         const SizedBox(height: 32,),
         PlayerWidget(player: player),
       ],),

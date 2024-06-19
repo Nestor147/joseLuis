@@ -16,8 +16,9 @@ class _LeccionAlumnosScreenAdultosState extends State<LeccionAlumnosScreenAdulto
  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: colorFondo,
       appBar: AppBar(
-        title: Text('Lección Alumnos',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
+        title: Text('Lección Alumnos',style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: EdgeInsets.all(15),

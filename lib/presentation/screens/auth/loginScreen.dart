@@ -149,9 +149,9 @@ Future<Map<String, String>> loadUserData() async {
     final colorTheme=Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Logueo"),centerTitle: true,),
 
-      backgroundColor: const Color(0xFFD6E2EA),
+
+      backgroundColor: Color.fromARGB(255, 253, 194, 0),
       resizeToAvoidBottomInset: true,
       body: Center(child: 
       SingleChildScrollView(
@@ -172,7 +172,7 @@ Future<Map<String, String>> loadUserData() async {
               Container(
                 
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 28, 25, 25),
+                  color: Colors.transparent,
                
                 ),
                 padding: const EdgeInsets.all(16),
@@ -181,33 +181,48 @@ Future<Map<String, String>> loadUserData() async {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+
+                      Text("Inicio Usuario",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      SizedBox(height: 25,),
                       CustomTextFormField(
                         icon: Icons.mail,
                          colorTheme: colorTheme, 
                          focusNode: emailFocusNode, 
                          controller: emailOrEmailController,
-                         typeName: "example@gmail.com",
-                         labelText: "Usuario",
+                         typeName: "name@gmail.com",
+                         labelText: "User",
                          estado: false,
                          keyboardType:TextInputType.emailAddress,
                          validator: Validators.emailOrUser, ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 25),
                       CustomTextFormField(
                         icon: Icons.lock,
                         colorTheme: colorTheme, 
                         focusNode: passwordFocusNode,
                         controller: passwordController,
                         typeName: "******",
-                        labelText: "Contraseña",
+                        labelText: "Password",
                         estado: false,
                         keyboardType:TextInputType.visiblePassword,
                         validator: Validators.passwordValidator, ),
                   
+                      const SizedBox(height: 20),
+                      
                       const SizedBox(height: 15),
-                        SizedBox(
+                      _isLoading ? CircularProgressIndicator()
+                      : ButtonLoginWidget(
+                        text: "Ingresar", 
+                        onPressed: (){
+                          onFormLogin(
+                            emailOrEmailController.text ,
+                             passwordController.text,
+                              context);
+                        }),
+                        SizedBox(height: 15,),
+                          SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(""),
                             const SizedBox(width: 5,),
@@ -225,16 +240,6 @@ Future<Map<String, String>> loadUserData() async {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 15),
-                      _isLoading ? CircularProgressIndicator()
-                      : ButtonLoginWidget(
-                        text: "Ingresar", 
-                        onPressed: (){
-                          onFormLogin(
-                            emailOrEmailController.text ,
-                             passwordController.text,
-                              context);
-                        }),
                       
                     ],
                   ),

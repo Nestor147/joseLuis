@@ -17,14 +17,14 @@ class _SelectVideosOrAudioScreenIntermedioState extends State<SelectVideosOrAudi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Multimedia",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor:colorSDATheme ,),
+      appBar: AppBar(title: Text("Multimedia",style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor:Colors.white ,),
       body: Container(
         decoration: BoxDecoration(
        
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
@@ -32,10 +32,11 @@ class _SelectVideosOrAudioScreenIntermedioState extends State<SelectVideosOrAudi
                   context.push('/multimediVideoIntermediario');
                 },
                 child: Container(
-                  width: 200,
-                  height: 200,
+                  width: double.infinity,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: colorSDATheme,
+                    borderRadius: BorderRadius.circular(20),
                 
                     boxShadow: [
                    
@@ -52,30 +53,7 @@ class _SelectVideosOrAudioScreenIntermedioState extends State<SelectVideosOrAudi
                 ),
               ),
               SizedBox(height: 20),
-              GestureDetector(
-                onTap: (){
-                  context.push('/multimediaAudioIntermediario');
-                },
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: colorSDATheme,
-        
-                    boxShadow: [
-                 
-                    ],
-                  ),
-                  child: Column(
-                       mainAxisAlignment:MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    Icon(Icons.audio_file,color: Colors.white,size: 55,),
-                    Text("Audio",style: TextStyle(color: Colors.white,fontSize: 25),)
-                  ],),
-                ),
-              ),
-              SizedBox(height: 20),
+             
             ],
           ),
         ),

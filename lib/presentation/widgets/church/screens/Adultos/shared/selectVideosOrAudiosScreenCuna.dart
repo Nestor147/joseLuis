@@ -17,14 +17,14 @@ class _SelectVideosOrAudioScreenAdultosState extends State<SelectVideosOrAudioSc
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Multimedia",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor:colorSDATheme ,),
+      appBar: AppBar(title: Text("Videos",style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor:Colors.white ,),
       body: Container(
         decoration: BoxDecoration(
          
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
@@ -56,27 +56,7 @@ class _SelectVideosOrAudioScreenAdultosState extends State<SelectVideosOrAudioSc
                   ],),
                 ),
               ),
-              SizedBox(height: 20),
-              GestureDetector(
-                onTap: (){
-                  context.push('/multimediaAudioAdultos');
-                },
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: colorSDATheme,
-                    
-                  ),
-                  child: Column(
-                       mainAxisAlignment:MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    Icon(Icons.audio_file,color: Colors.white,size: 55,),
-                    Text("Audio",style: TextStyle(color: Colors.white,fontSize: 25),)
-                  ],),
-                ),
-              ),
+             
               SizedBox(height: 20),
             ],
           ),

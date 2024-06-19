@@ -24,9 +24,10 @@ class ChurchScreenState extends ConsumerState<ChurchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: colorFondo,
       appBar: AppBar(
-        title: const Text("Recuersos",style: TextStyle(color: Colors.white),),
-        centerTitle: true,backgroundColor:colorSDATheme,leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){context.push("/");},)
+        title: const Text("Iglesia Adventista",style: TextStyle(color: Colors.black),),
+        centerTitle: true,backgroundColor:Colors.white,leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){context.push("/");},)
       ),
       body: SingleChildScrollView(
         child: Padding(

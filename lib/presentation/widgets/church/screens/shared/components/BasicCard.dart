@@ -29,6 +29,7 @@ class _BasicCardState extends State<BasicCard> {
         height: 100,
         decoration:  BoxDecoration(
           color: colorSDATheme,
+          borderRadius: BorderRadius.circular(20)
          
         ),
         child:  Padding(
@@ -37,9 +38,8 @@ class _BasicCardState extends State<BasicCard> {
           mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ListTile(
-                leading:const Icon(Icons.church,size: 20,color: Colors.white,) ,
+         
                 title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize:18)),
-                subtitle: Text(widget.age,style: const TextStyle(fontWeight: FontWeight.bold ,color:Colors.white,fontSize:15,fontFamily:AutofillHints.streetAddressLevel1)),
                 trailing: const Icon(Icons.arrow_forward,size: 20,color: Colors.white,),
       
               )

@@ -111,9 +111,9 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
     final colorTheme=Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Reguistro"),centerTitle: true,),
+
   
-      backgroundColor: const Color(0xFFD6E2EA),
+      backgroundColor: Color.fromARGB(255, 245, 161, 4),
       resizeToAvoidBottomInset: true,
       body:Center(child: 
       SingleChildScrollView(
@@ -125,54 +125,61 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
             children: [
               const SizedBox(height: 10),           
               Container(  
-                decoration: BoxDecoration(
-                  // FIXME: FM 6.11.24
-                  // color: Color.fromARGB(188, 4, 0, 0),
-                  color:const Color.fromARGB(255, 28, 25, 25),
-                
-                ),
+               
                 padding: const EdgeInsets.all(16),
                 child: Form(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      
-                      SizedBox(height: 10,),
+                         Text("Registro Usuario",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      SizedBox(height: 25,),
+   
                         CustomTextFormField(
                           icon: Icons.account_box,
                            colorTheme: colorTheme,
                             focusNode: usernameFocusNode,
                              controller: usernameController,
-                             typeName: "Nombre de usuario",
-                             labelText: "Usuario",
+                             typeName: "User name",
+                             labelText: "User",
                              keyboardType: TextInputType.text,
                              estado: false,
                              validator:Validators.validateUsername ,
                              ),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 25),
                       CustomTextFormField(
                         icon: Icons.mail,
                          colorTheme: colorTheme,
                           focusNode: emailFocusNode,
                           controller: emailController,
-                          typeName: "user@gmail.com",
+                          typeName: "name@gmail.com",
                           labelText: "Email",
                           keyboardType: TextInputType.emailAddress,
                           estado: false,
                           validator: Validators.emailValidator,
                           ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 25),
                       CustomTextFormField(
                         icon: Icons.lock,
                         colorTheme: colorTheme,
                         focusNode: passwordFocusNode,
                         controller: passwordController,
                         typeName: "******",
-                        labelText: "Contraseña",
+                        labelText: "Password",
                         estado: false,
                         keyboardType:TextInputType.visiblePassword,
                         validator: Validators.passwordValidator, ),
+                 
+                           const SizedBox(height: 30),
+                      _isLoading? CircularProgressIndicator(): ButtonLoginWidget(
+                        text: "Ingresar", 
+                        onPressed: (){
+                          submitRegister();
+                        }),
                       const SizedBox(height: 15),
+                  
+                  
+                      const SizedBox(height: 10),
+                           const SizedBox(height: 15),
 
                         SizedBox(
                         width: MediaQuery.of(context).size.width,
@@ -186,7 +193,7 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                                 context.go('/');
                               },
                                 child:  Text(
-                                  "Ingresar",
+                                  "Registrarse",
                                   style: TextStyle(
  
                                     color: colorSDATheme,
@@ -196,16 +203,6 @@ class RegisterScreenState extends ConsumerState<RegisterScreen> {
                           ],
                         ),
                       ),
-                           const SizedBox(height: 30),
-                      _isLoading? CircularProgressIndicator(): ButtonLoginWidget(
-                        text: "Registrarse", 
-                        onPressed: (){
-                          submitRegister();
-                        }),
-                      const SizedBox(height: 15),
-                  
-                  
-                      const SizedBox(height: 10),
                     ],
                   ),
                 ),

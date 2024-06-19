@@ -15,8 +15,9 @@ class _MultimediaVideosScreenCunaState extends State<MultimediaVideosScreenCuna>
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: colorFondo,
       appBar: AppBar(
-        title: Text('Multimedia',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: colorSDATheme,
+        title: Text('Multimedia',style: TextStyle(color: Colors.black),),centerTitle: true,backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
